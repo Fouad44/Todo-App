@@ -1,0 +1,89 @@
+body {
+   margin: 0;
+}
+
+.main-form {
+   display: flex;
+   flex-direction: column;
+   padding: 2rem;
+   border-radius: 0.5rem;
+   background-image: linear-gradient(rgb(158, 157, 252), rgb(252, 155, 252));
+
+   margin: 0 auto;
+   width: 80%;
+   margin-top: 3%;
+   margin-bottom: 1%;
+}
+.btn-wrapper {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+.btn1 {
+   width: 50%;
+   display: flex;
+   margin: 0 auto;
+}
+
+p {
+   display: flex;
+   justify-content: center;
+}
+
+ul {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100%;
+}
+
+.list-group-item {
+   width: 80%;
+   text-align: center;
+   background-image: linear-gradient(rgb(241, 211, 241), rgb(235, 235, 253));
+}
+
+.checkbox {
+   text-decoration: line-through;
+}
+.checkbox:checked {
+   text-decoration: line-through;
+}
+
+.btn-delete {
+   position: absolute;
+   right: 2%;
+   top: 20%;
+}
+
+.btn-edit {
+   position: absolute;
+   right: 2%;
+   top: 20%;
+   margin: 0 5rem;
+}
+.edit-form-content {
+   position: absolute;
+   top: 15%;
+   right: 10%;
+   padding: 3rem;
+   border-radius: 0.5rem;
+   background-color: white;
+   width: 80%;
+   z-index: 1000;
+}
+.edit-form {
+   display: flex;
+   width: 80%;
+   flex-direction: column;
+   position: relative;
+}
+
+.backdrop {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   background-color: rgba(0, 0, 0, 0.5);
+}
