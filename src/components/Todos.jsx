@@ -2,8 +2,10 @@ import { useState } from "react";
 import EditTodo from "./EditTodo";
 
 const Todos = (props) => {
+   const { handleEditTodo, currentTodo, setTodos } = props;
+
    const handleDelete = () => {
-      props.setTodos((prev) => prev.filter((p) => p.id != props.id));
+      setTodos((prev) => prev.filter((p) => p.id != currentTodo.id));
    };
 
    const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,16 +18,16 @@ const Todos = (props) => {
       setIsModalOpen(false);
    };
 
-   const handleSaveChanges = (id) => {
-      const newTodos = [...props.todos].map((todo) => todo.id === id);
-      props.setTodos(newTodos);
-   };
+   // const handleSaveChanges = (id) => {
+   //    const newTodos = [...props.todos].map((todo) => todo.id === id);
+   //    props.setTodos(newTodos);
+   // };
 
    return (
       <>
-         <li className="list-group-item" key={props.id}>
-            {props.title}
-            <br></br> {props.desc}
+         <li className="list-group-item" key={currentTodo.id}>
+            {currentTodo.title}
+            <br></br> {currentTodo.desc}
             <button
                onClick={handleDelete}
                className="btn-delete btn btn-danger"
@@ -42,12 +44,9 @@ const Todos = (props) => {
          {isModalOpen && (
             <EditTodo
                handleCloseModal={handleCloseModal}
-               title={props.title}
-               desc={props.desc}
-               setTodos={props.setTodos}
-               todos={props.todos}
-               id={props.id}
-               handleSaveChanges={handleSaveChanges}
+               setTodos={setTodos}
+               handleSaveChanges={handleEditTodo}
+               currentTodo={currentTodo}
             />
          )}
       </>

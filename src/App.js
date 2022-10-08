@@ -11,8 +11,9 @@ function App() {
    //get
 
    useEffect(() => {
-      if (localStorage.getItem("todo")) {
-         setTodos(JSON.parse(localStorage.getItem("todo")));
+      const getTodos = JSON.parse(localStorage.getItem("todo"));
+      if (getTodos?.length) {
+         setTodos(getTodos);
       }
    }, []);
 
@@ -22,6 +23,15 @@ function App() {
       localStorage.setItem("todo", JSON.stringify(todos));
    }, [todos]);
 
+   const handleEditTodo = (newTodo) => {
+      const tods = [...todos];
+      const todoIndex = tods.findIndex((t) => Number(t.id) === Number(newTodo.id));
+      if (todoIndex >= 0) {
+         tods.splice(todoIndex, 1, newTodo);
+         setTodos([...tods]);
+      }
+   }
+
    return (
       <div className="App">
          <Header />
@@ -30,11 +40,9 @@ function App() {
             {todos.map((todo) => (
                <Todos
                   setTodos={setTodos}
-                  todos={todos}
-                  title={todo.title}
-                  desc={todo.desc}
-                  id={todo.id}
                   key={todo.id}
+                  handleEditTodo={handleEditTodo}
+                  currentTodo={todo}
                />
             ))}
          </ul>
